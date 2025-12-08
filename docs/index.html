@@ -246,6 +246,88 @@
                 margin-left: 0;
             }
         }
+
+         .footer {
+        margin-top: 6rem;
+        padding: 2.5rem 2rem;
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+        border-top: 1px solid var(--border-color);
+        border-radius: 20px 20px 0 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    }
+
+    .footer-content {
+        display: flex;
+        gap: 3rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: rgba(56, 189, 248, 0.05);
+        border: 1px solid var(--border-color);
+    }
+
+    .footer a:hover {
+        color: var(--accent-primary);
+        background: rgba(56, 189, 248, 0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent-primary);
+    }
+
+    .footer a:active {
+        transform: translateY(-1px);
+    }
+
+    /* افکت‌های بک‌گراند مینیمال */
+    .footer::after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
+        opacity: 0.1;
+        border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .footer a {
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+        }
+    }
     </style>
 </head>
 <body>
@@ -627,6 +709,23 @@ watchEffect(() => {
                 <p>For full details, see the <a href="/LICENSE">LICENSE</a> file.</p>
             </section>
         </main>
+
+        <!-- اضافه کردن این قسمت قبل از بستن تگ </main> -->
+<footer class="footer">
+    <div class="footer-content">
+        <a href="https://zogjs.com" target="_blank" rel="noopener noreferrer">
+            🌐 zogjs.com
+        </a>
+        <a href="https://github.com/zogjs/zogjs" target="_blank" rel="noopener noreferrer">
+            📦 GitHub Repository
+        </a>
+        <a href="https://marketplace.visualstudio.com/items?itemName=zogjs.zogjs-support" target="_blank" rel="noopener noreferrer">
+            💎 VS Code Extension
+        </a>
+    </div>
+</footer>
+
+
     </div>
 
     <!-- Zog.js CDN -->
