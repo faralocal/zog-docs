@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zog.js - Full Reactivity with Minimal Code Size</title>
+    <title>Zog.js v0.3.0 | Documentation</title>
     <style>
         :root {
             --bg-primary: #0f172a;
@@ -143,7 +144,8 @@
             color: var(--text-secondary);
         }
 
-        ul, ol {
+        ul,
+        ol {
             margin-left: 1.5rem;
             margin-bottom: 1rem;
         }
@@ -161,7 +163,7 @@
             overflow-x: auto;
             margin: 1.5rem 0;
             border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         code {
@@ -175,7 +177,8 @@
         }
 
         /* Inline Code */
-        p code, li code {
+        p code,
+        li code {
             background: var(--bg-tertiary);
             padding: 0.25rem 0.5rem;
             border-radius: 6px;
@@ -184,13 +187,34 @@
         }
 
         /* Syntax Highlighting */
-        .token-keyword { color: #f472b6; }
-        .token-string { color: #a5f3fc; }
-        .token-number { color: #fde047; }
-        .token-comment { color: #94a3b8; font-style: italic; }
-        .token-function { color: #60a5fa; }
-        .token-variable { color: #c084fc; }
-        .token-operator { color: #f87171; }
+        .token-keyword {
+            color: #f472b6;
+        }
+
+        .token-string {
+            color: #a5f3fc;
+        }
+
+        .token-number {
+            color: #fde047;
+        }
+
+        .token-comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .token-function {
+            color: #60a5fa;
+        }
+
+        .token-variable {
+            color: #c084fc;
+        }
+
+        .token-operator {
+            color: #f87171;
+        }
 
         /* Table */
         table {
@@ -200,10 +224,11 @@
             background: var(--bg-secondary);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        th, td {
+        th,
+        td {
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
@@ -320,17 +345,19 @@
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">Zog.js</div>
+            <div class="logo">Zog.js v0.3.0</div>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#highlights" @click.prevent="scrollTo('highlights')">Highlights</a></li>
                     <li><a href="#quick-start" @click.prevent="scrollTo('quick-start')">Quick Start</a></li>
                     <li><a href="#core-concepts" @click.prevent="scrollTo('core-concepts')">Core Concepts</a></li>
                     <li><a href="#api-reference" @click.prevent="scrollTo('api-reference')">API Reference</a></li>
+                    <li><a href="#hooks" @click.prevent="scrollTo('hooks')">Hook System <span class="badge badge-new">NEW</span></a></li>
                     <li><a href="#examples" @click.prevent="scrollTo('examples')">Examples</a></li>
                     <li><a href="#template-directives" @click.prevent="scrollTo('template-directives')">Template Directives</a></li>
                     <li><a href="#plugins" @click.prevent="scrollTo('plugins')">Plugin System</a></li>
@@ -346,20 +373,27 @@
             <section id="highlights">
                 <h1>Zog.js Documentation</h1>
                 <p class="subtitle">Full reactivity with minimal code size</p>
-                
+
                 <h2>Highlights</h2>
-                <ul>
+                <ul z-pre>
                     <li>Reactive primitives: <code>ref</code>, <code>reactive</code>, <code>computed</code></li>
                     <li>Effects: <code>watchEffect</code></li>
-                    <li>Lightweight template compiler for declarative DOM binding and interpolation (<code>{{ }}</code>)</li>
-                    <li>Template directives: <code>z-if</code>, <code>z-for</code>, <code>z-text</code>, <code>z-html</code>, <code>z-show</code>, <code>z-model</code>, <code>z-on</code> (shorthand <code>@</code>)</li>
+                    <li>Lightweight template compiler for declarative DOM binding and interpolation (<code>{{ }}</code>)
+                    </li>
+                    <li>Template directives: <code>z-if</code>, <code>z-for</code>, <code>z-text</code>,
+                        <code>z-html</code>, <code>z-show</code>, <code>z-model</code>, <code>z-on</code> (shorthand
+                        <code>@</code>)
+                    </li>
                     <li>Dynamic attribute binding with <code>:attribute</code> syntax</li>
                     <li>App lifecycle: <code>createApp(...).mount(selector)</code> and <code>.unmount()</code></li>
-                    <li>Plugin system: <code>use(plugin, options)</code> for extending functionality <span class="badge badge-new">NEW</span></li>
+                    <li>Hook system: <code>addHook</code>, <code>removeHook</code> for lifecycle events <span class="badge badge-new">NEW</span></li>
+<li>Plugin system: <code>createApp().use(plugin)</code> for extending functionality</li>
+
+                            
                 </ul>
             </section>
 
-            <section id="quick-start">
+            <section z-pre id="quick-start">
                 <h2>Quick Start</h2>
                 <h3>Using the CDN</h3>
                 <p>The fastest way to get started is using the Zog.js CDN:</p>
@@ -402,37 +436,47 @@
 &lt;/html&gt;</code></pre>
             </section>
 
-            <section id="core-concepts">
+            <section z-pre id="core-concepts">
                 <h2>Core Concepts</h2>
 
                 <h3>Reactivity Primitives</h3>
                 <ul>
                     <li><code>ref(initialValue)</code> — creates a reactive reference with <code>.value</code></li>
-                    <li><code>reactive(object)</code> — returns a reactive proxy of an object (deep reactive for nested objects and arrays)</li>
-                    <li><code>computed(getter)</code> — memoized reactive value that recomputes when dependencies change</li>
-                    <li><code>watchEffect(fn, opts?)</code> — run a reactive effect immediately and re-run when dependencies change</li>
+                    <li><code>reactive(object)</code> — returns a reactive proxy of an object (deep reactive for nested
+                        objects and arrays)</li>
+                    <li><code>computed(getter)</code> — memoized reactive value that recomputes when dependencies change
+                    </li>
+                    <li><code>watchEffect(fn, opts?)</code> — run a reactive effect immediately and re-run when
+                        dependencies change</li>
                 </ul>
 
                 <h3>Template Interpolation</h3>
-                <p>Any text node containing <code>{{ expression }}</code> will be evaluated against the component scope:</p>
+                <p>Any text node containing <code>{{ expression }}</code> will be evaluated against the component scope:
+                </p>
                 <pre><code>&lt;p&gt;Hello, {{ name }} — you have {{ items.length }} items.&lt;/p&gt;</code></pre>
 
                 <h3>Template Directives</h3>
                 <p>The compiler supports a small set of directives for common tasks:</p>
                 <ul>
                     <li><code>z-if="expression"</code> — render element only when truthy</li>
-                    <li><code>z-else-if="expression"</code> and <code>z-else</code> — chainable conditional branches</li>
-                    <li><code>z-for="item in list"</code> — repeat an element for each item. Supports <code>:key</code> attribute for optimized diffing</li>
+                    <li><code>z-else-if="expression"</code> and <code>z-else</code> — chainable conditional branches
+                    </li>
+                    <li><code>z-for="item in list"</code> — repeat an element for each item. Supports <code>:key</code>
+                        attribute for optimized diffing</li>
                     <li><code>z-text="expression"</code> — set <code>textContent</code></li>
                     <li><code>z-html="expression"</code> — set <code>innerHTML</code></li>
-                    <li><code>z-show="expression"</code> — toggles <code>display</code> (<code>none</code> when falsy)</li>
+                    <li><code>z-show="expression"</code> — toggles <code>display</code> (<code>none</code> when falsy)
+                    </li>
                     <li><code>z-model="prop"</code> — two-way binding for inputs</li>
                     <li><code>z-on:event="handler"</code> or <code>@event="handler"</code> — attach event listener</li>
-                    <li><code>:attribute="expression"</code> — bind any attribute dynamically (style objects, class objects, boolean attributes)</li>
+                    <li><code>:attribute="expression"</code> — bind any attribute dynamically (style objects, class
+                        objects, boolean attributes)</li>
                 </ul>
+
+                
             </section>
 
-            <section id="api-reference">
+            <section z-pre id="api-reference">
                 <h2>API Reference</h2>
 
                 <h3><code>ref(value)</code></h3>
@@ -479,9 +523,110 @@ app.unmount(); // Cleanup</code></pre>
 };
 
 use(MyPlugin, { theme: 'dark' });</code></pre>
+
+                <h3><code>nextTick(fn?)</code></h3>
+                <p>Waits for the next DOM update cycle before executing a callback. Returns a Promise.</p>
+                <pre><code>import { nextTick } from './zog.js';
+
+count.value++;
+await nextTick();
+console.log('DOM has been updated!');</code></pre>
+
+                <h3><code>addHook(name, fn)</code> <span class="badge badge-new">NEW</span></h3>
+                <p>Registers a lifecycle hook. Available hooks: <code>beforeCompile</code>, <code>afterCompile</code>, <code>beforeEffect</code>, <code>onError</code>.</p>
+                <pre><code>import { addHook } from './zog.js';
+
+addHook('beforeEffect', (effect) => {
+    console.log('Effect running:', effect.id);
+});</code></pre>
+
+                <h3><code>removeHook(name, fn)</code> <span class="badge badge-new">NEW</span></h3>
+                <p>Removes a previously registered hook.</p>
+                <pre><code>import { removeHook } from './zog.js';
+
+const myHook = (effect) => console.log(effect);
+addHook('beforeEffect', myHook);
+
+// Later...
+removeHook('beforeEffect', myHook);</code></pre>
             </section>
 
-            <section id="examples">
+            <section z-pre id="hooks">
+                <h2>Hook System <span class="badge badge-new">NEW</span></h2>
+                <p>Version 0.3.0 introduces a powerful Hook system that allows you to tap into Zog.js internal lifecycle
+                    events. Perfect for debugging, logging, performance monitoring, and extending functionality.</p>
+
+                <h3>Available Hooks</h3>
+                <table>
+                    <tr>
+                        <th>Hook Name</th>
+                        <th>Parameters</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>beforeCompile</code></td>
+                        <td><code>(el, scope, cs)</code></td>
+                        <td>Runs before an element is compiled. Return <code>false</code> to skip compilation of that
+                            element.</td>
+                    </tr>
+                    <tr>
+                        <td><code>afterCompile</code></td>
+                        <td><code>(el, scope, cs)</code></td>
+                        <td>Runs after an element and its children have been compiled successfully.</td>
+                    </tr>
+                    <tr>
+                        <td><code>beforeEffect</code></td>
+                        <td><code>(effect)</code></td>
+                        <td>Triggered every time a reactive effect is about to run.</td>
+                    </tr>
+                    <tr>
+                        <td><code>onError</code></td>
+                        <td><code>(error, source, args)</code></td>
+                        <td>Global error handler for compilation errors, event handler errors, and plugin errors.</td>
+                    </tr>
+                </table>
+
+                <h3>Adding and Removing Hooks</h3>
+                <pre><code>import { addHook, removeHook } from './zog.js';
+
+// Add a hook
+const myHook = (effect) => {
+    console.log('Effect running with ID:', effect.id);
+};
+
+addHook('beforeEffect', myHook);
+
+// Remove it later when no longer needed
+removeHook('beforeEffect', myHook);</code></pre>
+
+                <h3>Example: Performance Monitor</h3>
+                <pre><code>import { addHook } from './zog.js';
+
+addHook('beforeEffect', (effect) => {
+    const start = performance.now();
+    effect._startTime = start;
+    console.log(`⏱️ Effect ${effect.id} starting...`);
+});
+
+addHook('onError', (error, source, args) => {
+    console.error(`❌ Error in ${source}:`, error);
+    // Send to analytics service
+    sendToAnalytics({ error, source, timestamp: Date.now() });
+});</code></pre>
+
+                <h3>Use Cases</h3>
+                <ul>
+                    <li><strong>Debugging:</strong> Log every reactive update to understand application behavior</li>
+                    <li><strong>Performance Monitoring:</strong> Track effect execution times and optimize bottlenecks
+                    </li>
+                    <li><strong>Error Tracking:</strong> Capture and send errors to monitoring services like Sentry</li>
+                    <li><strong>Development Tools:</strong> Build custom devtools extensions with lifecycle visibility
+                    </li>
+                    <li><strong>Testing:</strong> Verify that effects run in the correct order during tests</li>
+                </ul>
+            </section>
+
+            <section z-pre id="examples">
                 <h2>Examples</h2>
 
                 <h3>Simple Counter</h3>
@@ -558,9 +703,17 @@ createApp(() => {
   return { isActive, textColor, size, toggleActive };
 }).mount('#styling');
 &lt;/script&gt;</code></pre>
+
+
+<h3>Unmounting Applications</h3>
+<p>When you need to clean up an application instance (e.g., in SPAs or dynamic component mounting), use the <code>unmount()</code> method:</p>
+<pre><code>const app = createApp(setup).mount('#app');
+
+// Later, when component is removed:
+app.unmount(); // Cleans up all effects, listeners, and scopes</code></pre>
             </section>
 
-            <section id="template-directives">
+            <section z-pre id="template-directives">
                 <h2>Template Directives</h2>
                 <table>
                     <thead>
@@ -635,75 +788,130 @@ createApp(() => {
                 </table>
                 <p><strong>Notes:</strong></p>
                 <ul>
-                    <li>Event directive accepts a scope function or expression (<code>@click="doSomething"</code> where <code>doSomething</code> exists in scope).</li>
-                    <li><code>z-for</code> supports <code>in</code> and <code>of</code> and <code>(item, index)</code> tuple syntax.</li>
+                    <li>Event directive accepts a scope function or expression (<code>@click="doSomething"</code> where
+                        <code>doSomething</code> exists in scope).
+                    </li>
+                    <li><code>z-for</code> supports <code>in</code> and <code>of</code> and <code>(item, index)</code>
+                        tuple syntax.</li>
                     <li>Use <code>:key</code> in <code>z-for</code> loops for better performance when lists change.</li>
-                    <li>Boolean attributes (like <code>disabled</code>, <code>checked</code>) are handled automatically with <code>:</code> binding.</li>
+                    <li>Boolean attributes (like <code>disabled</code>, <code>checked</code>) are handled automatically
+                        with <code>:</code> binding.</li>
                 </ul>
             </section>
 
-            <section id="plugins">
-                <h2>Plugin System <span class="badge badge-new">NEW</span></h2>
-                <p>Zog.js supports a plugin architecture to extend functionality. Plugins receive access to core APIs and can add custom features.</p>
+            <section z-pre id="plugins">
+                <h2>Plugin System</h2>
+                <p>Zog.js supports a powerful plugin architecture. Plugins receive full access to the core API and
+                    internal utilities, enabling deep extensions of the framework.</p>
+
+                <h3>Plugin API</h3>
+                <p>When you install a plugin, it receives an object with:</p>
+                <ul>
+                    <li><strong>Core Functions:</strong> <code>reactive</code>, <code>ref</code>, <code>computed</code>,
+                        <code>watchEffect</code>, <code>createApp</code>
+                    </li>
+                    <li><strong>Hook Management:</strong> <code>addHook</code>, <code>removeHook</code></li>
+                    <li><strong>Internal Utilities:</strong> Exposed via <code>utils</code> object:
+                        <ul>
+                            <li><code>isObj</code> - Check if value is an object</li>
+                            <li><code>evalExp</code> - Safely evaluate expressions</li>
+                            <li><code>Dep</code> - Dependency tracking class</li>
+                            <li><code>ReactiveEffect</code> - Effect system class</li>
+                            <li><code>Scope</code> - Component scope manager</li>
+                            <li><code>compile</code> - Template compilation function</li>
+                        </ul>
+                    </li>
+                </ul>
 
                 <h3>Creating a Plugin</h3>
-                <pre><code>// my-plugin.js
-export default {
-    install(zog, options) {
-        const { reactive, ref, watchEffect } = zog;
+                <pre><code>// router-plugin.js
+const RouterPlugin = {
+    install(app, options) {
+        const { reactive, watchEffect, addHook } = app;
         
-        // Add custom functionality
-        console.log('My plugin installed!', options);
+        // Create reactive route object
+        const route = reactive({ 
+            path: window.location.pathname,
+            query: new URLSearchParams(window.location.search)
+        });
         
-        // Access internal utilities if needed
-        const { Dep, ReactiveEffect } = zog.utils;
+        // Listen to browser navigation
+        window.addEventListener('popstate', () => {
+            route.path = window.location.pathname;
+        });
+        
+        // Optional: Add lifecycle hooks
+        addHook('afterCompile', (el) => {
+            console.log('Route component compiled:', el.tagName);
+        });
+        
+        // Return API to be merged into app
+        return { route };
     }
-};</code></pre>
+};
+
+export default RouterPlugin;</code></pre>
 
                 <h3>Using a Plugin</h3>
-                <pre><code>import { use } from 'https://cdn.zogjs.com/zog.es.js';
-import MyPlugin from './my-plugin.js';
+                <pre><code>import { createApp } from './zog.js';
+import RouterPlugin from './router-plugin.js';
 
-use(MyPlugin, { debug: true });</code></pre>
+const app = createApp(setup)
+    .use(RouterPlugin, { basePath: '/' })
+    .mount('#app');</code></pre>
+
+                <h3>Plugin Return Values</h3>
+                <p>Plugins can optionally return an object that will be merged into the application context, or return
+                    the app instance itself for method chaining.</p>
 
                 <h3>Plugin Use Cases</h3>
                 <ul>
-                    <li>Router implementations</li>
-                    <li>State management solutions</li>
-                    <li>Development tools</li>
-                    <li>Form validation</li>
+                    <li>Routing systems with history management</li>
+                    <li>Global state management solutions</li>
+                    <li>Form validation libraries</li>
+                    <li>HTTP client wrappers</li>
                     <li>Animation helpers</li>
-                    <li>HTTP clients</li>
+                    <li>Devtools integrations</li>
                 </ul>
             </section>
 
-            <section id="tips">
+            <section z-pre id="tips">
                 <h2>Tips & Gotchas</h2>
                 <ul>
-                    <li>Template expressions are evaluated against the scope object returned by your <code>setup()</code> function.</li>
-                    <li>Refs must be accessed with <code>.value</code> in JavaScript, but are automatically unwrapped in templates.</li>
-                    <li>Array reactivity is fully supported - methods like <code>push</code>, <code>pop</code>, <code>splice</code> trigger updates automatically.</li>
+                    <li>Template expressions are evaluated against the scope object returned by your
+                        <code>setup()</code> function.
+                    </li>
+                    <li>Refs must be accessed with <code>.value</code> in JavaScript, but are automatically unwrapped in
+                        templates.</li>
+                    <li>Array reactivity is fully supported - methods like <code>push</code>, <code>pop</code>,
+                        <code>splice</code> trigger updates automatically.
+                    </li>
                     <li>Use <code>:key</code> in <code>z-for</code> loops for better performance when lists change.</li>
-                    <li>The library is ESM: import using <code>type="module"</code> or bundle with a bundler (Vite, Webpack, Rollup).</li>
+                    <li>The library is ESM: import using <code>type="module"</code> or bundle with a bundler (Vite,
+                        Webpack, Rollup).</li>
                     <li><code>z-html</code> can cause XSS vulnerabilities - only use with trusted content.</li>
                 </ul>
 
-                <h3>Performance Optimizations <span class="badge badge-updated">UPDATED</span></h3>
-                <p>Zog.js v2.2 includes several optimizations:</p>
+                <h3>Performance Optimizations</h3>
+                <p>Zog.js v0.3.0 includes several optimizations:</p>
                 <ul>
-                    <li><strong>Expression caching</strong>: Compiled template expressions are cached (limit: 200) for better performance</li>
+                    <li><strong>Expression caching</strong>: Compiled template expressions are cached (limit: 200) for
+                        better performance</li>
                     <li><strong>Unified array handling</strong>: Single method handler for all array operations</li>
-                    <li><strong>Key-based diffing</strong>: Use <code>:key</code> attribute in <code>z-for</code> loops for efficient list updates</li>
+                    <li><strong>Key-based diffing</strong>: Use <code>:key</code> attribute in <code>z-for</code> loops
+                        for efficient list updates</li>
                     <li><strong>Batched updates</strong>: Reactive changes are batched and executed in microtasks</li>
-                    <li><strong>Lazy computed values</strong>: Computed properties only recalculate when accessed and dependencies change</li>
+                    <li><strong>Lazy computed values</strong>: Computed properties only recalculate when accessed and
+                        dependencies change</li>
                 </ul>
             </section>
 
-            <section id="development">
+            <section z-pre id="development">
                 <h2>Development & Contributing</h2>
                 <ul>
                     <li>The repository contains the single-file implementation <code>zog.js</code>.</li>
-                    <li>To experiment, create an HTML page with <code>&lt;script type="module"&gt;</code> and import from the CDN or local file.</li>
+                    <li>To experiment, create an HTML page with <code>&lt;script type="module"&gt;</code> and import
+                        from the CDN or local file.</li>
                     <li>If you plan to add features or refactors:
                         <ul>
                             <li>Keep the public API stable (exports listed above).</li>
@@ -714,28 +922,26 @@ use(MyPlugin, { debug: true });</code></pre>
                     </li>
                 </ul>
 
-                <h3>Migration from v2.0/v2.1</h3>
-                <p><strong>Removed in v2.2:</strong></p>
+                <h3>What's New in v0.3.0</h3>
+                <p><strong>New Features:</strong></p>
                 <ul>
-                    <li><code>route</code> object - create a router plugin instead</li>
-                    <li><code>nextTick()</code> - use <code>Promise.resolve().then(fn)</code></li>
-                    <li><code>toRaw()</code>, <code>toRef()</code>, <code>unref()</code> - use alternative patterns</li>
-                    <li><code>isRef()</code>, <code>isReactive()</code> - check <code>obj._isRef</code></li>
-                    <li><code>shallowRef()</code>, <code>shallowReactive()</code> - use regular <code>ref</code>/<code>reactive</code></li>
-                    <li><code>watch()</code> - use <code>watchEffect</code></li>
-                </ul>
-                <p><strong>Added in v2.2:</strong></p>
-                <ul>
-                    <li>Plugin system via <code>use(plugin, options)</code></li>
-                    <li>Expression caching for better performance</li>
-                    <li>Optimized array method handling</li>
+                    <li><strong>Hook System:</strong> <code>addHook()</code> and <code>removeHook()</code> for tapping
+                        into internal lifecycle events</li>
+                    <li><strong>Enhanced Plugin API:</strong> Plugins now receive <code>utils</code> object with
+                        internal classes and functions</li>
+                    <li><strong>nextTick() restored:</strong> Convenient helper for waiting on DOM updates</li>
+                    <li><strong>Improved Error Handling:</strong> Global <code>onError</code> hook catches compilation
+                        and runtime errors</li>
+                    <li><strong>Better Array Reactivity:</strong> All array methods including iterators are fully
+                        reactive</li>
                 </ul>
             </section>
 
-            <section id="license">
+            <section z-pre id="license">
                 <h2>License</h2>
                 <p>Zog.js is open-source software licensed under the MIT License.</p>
-                <p>You are free to use, modify, and distribute this project in commercial or non-commercial applications.</p>
+                <p>You are free to use, modify, and distribute this project in commercial or non-commercial
+                    applications.</p>
                 <p>For full details, see the <a href="/LICENSE">LICENSE</a> file.</p>
             </section>
         </main>
@@ -748,9 +954,12 @@ use(MyPlugin, { debug: true });</code></pre>
                 <div class="footer-links">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="https://zogjs.com" target="_blank" rel="noopener noreferrer" class="website">Official Website</a></li>
-                        <li><a href="https://github.com/zogjs/zogjs" target="_blank" rel="noopener noreferrer" class="github">GitHub Repository</a></li>
-                        <li><a href="https://marketplace.visualstudio.com/items?itemName=zogjs.zogjs-support" target="_blank" rel="noopener noreferrer" class="vscode">VS Code Extension</a></li>
+                        <li><a href="https://zogjs.com" target="_blank" rel="noopener noreferrer"
+                                class="website">Official Website</a></li>
+                        <li><a href="https://github.com/zogjs/zogjs" target="_blank" rel="noopener noreferrer"
+                                class="github">GitHub Repository</a></li>
+                        <li><a href="https://marketplace.visualstudio.com/items?itemName=zogjs.zogjs-support"
+                                target="_blank" rel="noopener noreferrer" class="vscode">VS Code Extension</a></li>
                     </ul>
                 </div>
             </div>
@@ -763,13 +972,23 @@ use(MyPlugin, { debug: true });</code></pre>
 
     <!-- Zog.js from CDN -->
     <script type="module">
-        import { createApp, ref, watchEffect } from 'https://cdn.zogjs.com/zog.es.js';
+        import { createApp, ref, watchEffect, addHook } from 'https://cdn.zogjs.com/zog.es.js';
+
 
         createApp(() => {
+            
+            addHook('beforeCompile', (el, scope, cs) => {
+                if (el.hasAttribute && el.hasAttribute('z-pre')) {                    
+                    el.removeAttribute('z-pre'); // حذف attribute
+                    return false; // stop compilation
+                }
+            });
+
+
             const activeSection = ref('highlights');
             const sections = [
                 'highlights', 'quick-start', 'core-concepts', 
-                'api-reference', 'examples', 'template-directives',
+                'api-reference', 'hooks', 'examples', 'template-directives',
                 'plugins', 'tips', 'development', 'license'
             ];
 
@@ -831,7 +1050,7 @@ use(MyPlugin, { debug: true });</code></pre>
 
             // Setup scroll listener
             window.addEventListener('scroll', onScroll, { passive: true });
-            
+
             // Initial highlight
             Promise.resolve().then(() => {
                 handleScroll();
@@ -844,4 +1063,5 @@ use(MyPlugin, { debug: true });</code></pre>
         }).mount('#app');
     </script>
 </body>
+
 </html>
